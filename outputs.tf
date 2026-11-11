@@ -26,6 +26,10 @@ output "ec2_client_vpn_routes_target_vpc_subnet_id" {
   description = "Map of target_vpc_subnet_id values across all ec2_client_vpn_routes, keyed the same as var.ec2_client_vpn_routes"
   value       = { for k, v in aws_ec2_client_vpn_route.ec2_client_vpn_routes : k => v.target_vpc_subnet_id if v.target_vpc_subnet_id != null && length(v.target_vpc_subnet_id) > 0 }
 }
+output "ec2_client_vpn_routes_transit_gateway_attachment_id" {
+  description = "Map of transit_gateway_attachment_id values across all ec2_client_vpn_routes, keyed the same as var.ec2_client_vpn_routes"
+  value       = { for k, v in aws_ec2_client_vpn_route.ec2_client_vpn_routes : k => v.transit_gateway_attachment_id if v.transit_gateway_attachment_id != null && length(v.transit_gateway_attachment_id) > 0 }
+}
 output "ec2_client_vpn_routes_type" {
   description = "Map of type values across all ec2_client_vpn_routes, keyed the same as var.ec2_client_vpn_routes"
   value       = { for k, v in aws_ec2_client_vpn_route.ec2_client_vpn_routes : k => v.type if v.type != null && length(v.type) > 0 }
